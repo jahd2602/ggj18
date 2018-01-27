@@ -5,15 +5,15 @@
 [ext_resource path="res://Satellite.gd" type="Script" id=3]
 [ext_resource path="res://satellite.jpg" type="Texture" id=4]
 [ext_resource path="res://TransmissionLine.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Cloud.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Cloud.gd" type="Script" id=7]
+[ext_resource path="res://CloudSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Cloud.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -48,14 +48,11 @@ shape = SubResource( 1 )
 
 [node name="TransmissionLine" parent="." index="2" instance=ExtResource( 5 )]
 
-[node name="Cloud" parent="." index="3" instance=ExtResource( 6 )]
+[node name="CloudSpawner" parent="." index="3" instance=ExtResource( 6 )]
 
-script = ExtResource( 7 )
+[node name="Cloud" parent="." index="4" instance=ExtResource( 7 )]
 
-[node name="Cloud2" parent="." index="4" instance=ExtResource( 6 )]
-
-position = Vector2( 810, 460 )
-script = ExtResource( 7 )
+position = Vector2( 268.73, 86.2201 )
 
 [connection signal="anthenaRotated" from="MediaTruck" to="TransmissionLine" method="_on_MediaTruck_anthenaRotated"]
 
