@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TransmissionLine.gd" type="Script" id=1]
+
+[sub_resource type="SegmentShape2D" id=1]
+
+custom_solver_bias = 0.0
+a = Vector2( -102.56, 0 )
+b = Vector2( 442.475, 0 )
+
+[sub_resource type="SegmentShape2D" id=2]
+
+custom_solver_bias = 0.0
+a = Vector2( -102.817, -0.727135 )
+b = Vector2( 447.294, -8.48218 )
+
+[sub_resource type="SegmentShape2D" id=3]
+
+custom_solver_bias = 0.0
+a = Vector2( -99.8982, -0.0253906 )
+b = Vector2( 444.712, 7.63541 )
+
+[node name="TransmissionLine" type="Node2D"]
+
+position = Vector2( 320, 170 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="." index="0"]
+
+visible = false
+points = PoolVector2Array( 700, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+width = 10.0
+default_color = Color( 0.4, 0.5, 1, 1 )
+texture_mode = 1036568777
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="Ray1" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Collision" type="CollisionShape2D" parent="Ray1" index="0"]
+
+position = Vector2( 350, 0 )
+scale = Vector2( 3.41262, 2.00694 )
+shape = SubResource( 1 )
+
+[node name="Ray2" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Collision" type="CollisionShape2D" parent="Ray2" index="0"]
+
+position = Vector2( 345.627, 13.4388 )
+rotation = 0.0349066
+scale = Vector2( 3.36408, 1.88194 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ray3" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Collision" type="CollisionShape2D" parent="Ray3" index="0"]
+
+position = Vector2( 349.255, -11.7986 )
+rotation = -0.0349066
+scale = Vector2( 3.39806, 1.90509 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Pause", "Transform" ]
+
+
