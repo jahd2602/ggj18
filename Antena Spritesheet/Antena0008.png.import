@@ -7,10 +7,10 @@ path="res://.import/Antena0008.png-dd424648c8f30e45a2ce5cd7ac7e8eaa.stex"
 [deps]
 
 source_file="res://Antena Spritesheet/Antena0008.png"
-source_md5="c75d73c685da7e7c88246f3549f15817"
+source_md5="c0cb5e5e1613508222e3d54af9e54986"
 
 dest_files=[ "res://.import/Antena0008.png-dd424648c8f30e45a2ce5cd7ac7e8eaa.stex" ]
-dest_md5="f5c76a341d451430b2b6057e312bf446"
+dest_md5="3c927cc16c9d3c144d0cbf57408fddb6"
 
 [params]
 
