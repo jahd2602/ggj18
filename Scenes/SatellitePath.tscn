@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/SatellitePath.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Satellite.gd" type="Script" id=2]
-[ext_resource path="res://Assets/satellite.jpg" type="Texture" id=3]
+[ext_resource path="res://Assets/satellite.png" type="Texture" id=3]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -50,13 +50,13 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="Follow/Satellite" index="0"]
 
-position = Vector2( 0, -10 )
-scale = Vector2( 0.130178, 0.130178 )
+position = Vector2( 0.607117, -8.93335 )
+scale = Vector2( 0.688293, 0.688293 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Follow/Satellite" index="1"]
 
-position = Vector2( 0, -10 )
+position = Vector2( 3.05176e-05, -10.0001 )
 scale = Vector2( 6.01923, 6.01923 )
 shape = SubResource( 2 )
 

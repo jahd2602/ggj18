@@ -1,12 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://Assets/cloud.png" type="Texture" id=2]
-
-[sub_resource type="CircleShape2D" id=1]
-
-custom_solver_bias = 0.0
-radius = 60.0
 
 [node name="Cloud" type="Area2D" index="0"]
 
@@ -20,12 +15,15 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
-shape = SubResource( 1 )
+build_mode = 0
+polygon = PoolVector2Array( -48.8279, -10.0603, -44.8474, -1.43585, 32.1093, 35.7157, 44.0508, 35.0522, 47.3679, 25.7644, 41.3972, 13.8228, 6.2359, -27.3092, -7.03247, -35.2703, -20.3009, -31.9532, -36.8864, -25.9824 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 

@@ -7,10 +7,10 @@ path="res://.import/truck.png-af6ee91213ba20fb5101204dce981e9f.stex"
 [deps]
 
 source_file="res://Assets/truck.png"
-source_md5="6ebc00ce25ea3ca59cdf5ea4a5f6d9d9"
+source_md5="b380ce5b0fc1c01bed6ef8f56ec04602"
 
 dest_files=[ "res://.import/truck.png-af6ee91213ba20fb5101204dce981e9f.stex" ]
-dest_md5="f15249be1670f9e79f0076f1de627074"
+dest_md5="440efa21a7ec7a462fd2f72bc6abcdcd"
 
 [params]
 
