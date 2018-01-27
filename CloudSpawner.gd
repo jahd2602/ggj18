@@ -6,6 +6,7 @@ extends Node
 var cloud_loaded = preload("res://Cloud.tscn")
 var interval = 2
 var initial_interval = 10
+var initial_exponent = .1
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -13,15 +14,21 @@ func _ready():
 	pass
 
 func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
 	if interval > 0:
 		interval -= delta
-	else:
+	elif initial_interval > 2:
 		interval = initial_interval
-		initial_interval -= .5
-		var cloud = cloud_loaded.instance()
-		cloud.position = Vector2(rand_range(-360, 360), -60)
-		get_owner().add_child(cloud)
+		if initial_interval > .5:
+			initial_interval -= exp(initial_exponent) - 1
+			initial_exponent += .1
+		instance_cloud()
+	else:
+		interval = 2
+		instance_cloud()
+	pass
+	
+func instance_cloud():
+	var cloud = cloud_loaded.instance()
+	cloud.position = Vector2(rand_range(-360, 360), -60)
+	get_owner().add_child(cloud)
 	pass

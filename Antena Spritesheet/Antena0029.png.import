@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Antena0029.png-b6fcfcf231a8fd31a7a9dbcce5c2a24a.stex"
+
+[deps]
+
+source_file="res://Antena Spritesheet/Antena0029.png"
+source_md5="25dce4ac0c405fe2fb4996c87ed89d40"
+
+dest_files=[ "res://.import/Antena0029.png-b6fcfcf231a8fd31a7a9dbcce5c2a24a.stex" ]
+dest_md5="098953c6382b4a51ceddd9307a9c74c7"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
