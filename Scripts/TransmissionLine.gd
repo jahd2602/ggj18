@@ -25,13 +25,13 @@ func _on_MediaTruck_anthenaRotated(degree):
 func calculate_strength():
 	var new_strength = 0
 	var areas
-	if get_node("Ray1").overlaps_area(get_parent().get_node("Satellite")):
+	if get_node("Ray1").overlaps_area(get_parent().get_node("SatellitePath/Follow/Satellite")):
 		if has_clear_path(get_node("Ray1")):
 			new_strength +=60
-	if get_node("Ray2").overlaps_area(get_parent().get_node("Satellite")):
+	if get_node("Ray2").overlaps_area(get_parent().get_node("SatellitePath/Follow/Satellite")):
 		if has_clear_path(get_node("Ray2")):
 			new_strength +=20
-	if get_node("Ray3").overlaps_area(get_parent().get_node("Satellite")):
+	if get_node("Ray3").overlaps_area(get_parent().get_node("SatellitePath/Follow/Satellite")):
 		if has_clear_path(get_node("Ray3")):
 			new_strength +=20
  	

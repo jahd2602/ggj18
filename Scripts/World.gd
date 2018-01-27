@@ -12,4 +12,4 @@ func _process(delta):
 
 func _on_TransmissionLine_strength_changed(new_strength):
 	signal_strength = new_strength
-	#print(signal_strength)
+	print(signal_strength)

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/SatellitePath.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Satellite.gd" type="Script" id=2]
+[ext_resource path="res://Assets/satellite.jpg" type="Texture" id=3]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1083.08, -81.0573, 0, -244.015, 22.4041, 166.094, 1181.51, 361.861, 0, 0, 0, 0, 1060.52, 815.032 )
+}
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="SatellitePath" type="Path2D" index="0"]
+
+position = Vector2( 89.8755, 0 )
+scale = Vector2( 0.915254, 1 )
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Follow" type="PathFollow2D" parent="." index="0"]
+
+position = Vector2( 1083.08, -81.0573 )
+rotation = 1.12493
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = true
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="Satellite" type="Area2D" parent="Follow" index="0"]
+
+position = Vector2( 3.48013, 0.554688 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="Follow/Satellite" index="0"]
+
+position = Vector2( 0, -10 )
+scale = Vector2( 0.130178, 0.130178 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Follow/Satellite" index="1"]
+
+position = Vector2( 0, -10 )
+scale = Vector2( 6.01923, 6.01923 )
+shape = SubResource( 2 )
+
+

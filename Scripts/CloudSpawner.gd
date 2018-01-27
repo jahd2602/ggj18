@@ -28,7 +28,6 @@ func _process(delta):
 	pass
 	
 func instance_cloud():
-	print("Entrou")
 	var cloud = cloud_loaded.instance()
 	cloud.position = Vector2(rand_range(-360, 360), -60)
 	get_owner().add_child(cloud)
