@@ -1,8 +1,8 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/MediaTruck.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/TransmissionLine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/TransmissionLine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/MediaTruck.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/CloudSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/SatellitePath.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/SourceSansPro-SemiBold.ttf" type="DynamicFontData" id=6]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Assets/tenor_1_.png/d14727425c8f404398946fcbe0d7ad07-11.png" type="Texture" id=25]
 [ext_resource path="res://Assets/tenor_1_.png/d14727425c8f404398946fcbe0d7ad07-12.png" type="Texture" id=26]
 [ext_resource path="res://Assets/tenor_1_.png/d14727425c8f404398946fcbe0d7ad07-13.png" type="Texture" id=27]
+[ext_resource path="res://Assets/city.svg" type="Texture" id=28]
 
 [sub_resource type="GDScript" id=1]
 
@@ -49,7 +50,7 @@ func _input(event):
 		get_node(label).hide()
 "
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 
 size = 150
 use_mipmaps = true
@@ -57,7 +58,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 
 size = 45
 use_mipmaps = false
@@ -65,7 +66,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Settings" ]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -94,7 +95,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Border Width", "Corner Radius", "Expand Margin", "Resource" ]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -140,7 +141,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 script = ExtResource( 1 )
 signal_label = NodePath("HUD/LabelSignalQuality")
@@ -148,13 +149,14 @@ progress_bar = NodePath("HUD/ProgressBar")
 final_score_label = NodePath("HUD/LabelFinalScore")
 tv_sprite = NodePath("AnimatedSprite/AnimatedSprite2")
 
-[node name="MediaTruck" parent="." index="0" instance=ExtResource( 2 )]
+[node name="TransmissionLine" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 287.516, 551.145 )
+position = Vector2( 281.784, 603.822 )
 
-[node name="TransmissionLine" parent="." index="1" instance=ExtResource( 3 )]
+[node name="MediaTruck" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 281.784, 534.967 )
+position = Vector2( 287.516, 620 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CloudSpawner" parent="." index="2" instance=ExtResource( 4 )]
 
@@ -188,7 +190,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "PAUSED"
 align = 1
 valign = 1
@@ -220,7 +222,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "SIGNAL QUALITY 0%"
 percent_visible = 1.0
 lines_skipped = 0
@@ -242,8 +244,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -270,7 +272,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -286,14 +288,15 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="BadTruck" parent="." index="7" instance=ExtResource( 7 )]
 
-position = Vector2( 1044.6, 416.628 )
+position = Vector2( 900, 360 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="8"]
 
 position = Vector2( 83.47, 60.8635 )
 frames = SubResource( 6 )
 animation = "default"
-frame = 5
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="AnimatedSprite" index="0"]
@@ -303,9 +306,22 @@ scale = Vector2( 0.322775, 0.416021 )
 frames = SubResource( 7 )
 animation = "default"
 
-[connection signal="anthenaRotated" from="MediaTruck" to="TransmissionLine" method="_on_MediaTruck_anthenaRotated"]
+[node name="Background" type="CanvasLayer" parent="." index="9"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background" index="0"]
+
+position = Vector2( 641.971, 354.972 )
+texture = ExtResource( 28 )
 
 [connection signal="strength_changed" from="TransmissionLine" to="." method="_on_TransmissionLine_strength_changed"]
+
+[connection signal="anthenaRotated" from="MediaTruck" to="TransmissionLine" method="_on_MediaTruck_anthenaRotated"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

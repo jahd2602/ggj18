@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/BadTruck.gd" type="Script" id=1]
 [ext_resource path="res://Assets/truck-bad.png" type="Texture" id=2]
 
-[node name="BadTruck" type="Area2D" index="0"]
+[node name="BadTruck" type="Area2D"]
 
 position = Vector2( 810, 270 )
 input_pickable = true
