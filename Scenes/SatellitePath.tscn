@@ -8,7 +8,7 @@
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1083.08, -81.0573, 0, -244.015, 22.4041, 166.094, 1181.51, 361.861, 0, 0, 0, 0, 1060.52, 815.032 )
+"points": PoolVector2Array( 0, 0, 0, 0, 808.263, -36.7515, 0, -244.015, 22.4041, 166.094, 1236.67, 349.999, 0, 0, 0, 0, 1006.6, 764.647 )
 }
 
 [sub_resource type="CircleShape2D" id=2]
@@ -25,9 +25,9 @@ script = ExtResource( 1 )
 
 [node name="Follow" type="PathFollow2D" parent="." index="0"]
 
-position = Vector2( 1083.08, -81.0573 )
-rotation = 1.12493
-offset = 0.0
+position = Vector2( 894.737, -2.07213 )
+rotation = 0.423402
+offset = 93.07
 h_offset = 0.0
 v_offset = 0.0
 rotate = true

@@ -19,10 +19,8 @@ func _process(delta):
 #	# Update game logic here.
 	if Input.is_action_pressed('rotate_clockwise'):
 		horizontalAngle += 0.1
-		print("rotating")
 		if Input.is_action_pressed('accelerate_rotation'):
 			horizontalAngle += 0.9
-			print("accelerating")
 		if horizontalAngle > 360:
 			horizontalAngle = 0
 		emit_signal('anthenaRotated', horizontalAngle)

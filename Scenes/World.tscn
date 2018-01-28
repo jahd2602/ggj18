@@ -1,17 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/font1.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Scenes/MediaTruck.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/TransmissionLine.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/CloudSpawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/SatellitePath.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Fonts/SourceSansPro-SemiBold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scenes/MediaTruck.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/TransmissionLine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/CloudSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/SatellitePath.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/SourceSansPro-SemiBold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="GDScript" id=1]
 
 script/source = "extends CanvasLayer
 
+export(NodePath) var label
 
 func _ready():
 	set_process_input(true)
@@ -22,25 +22,105 @@ func _input(event):
 		get_tree().set_pause(!get_tree().is_paused())
 		
 	if get_tree().is_paused():
-		get_node(\"Label\").show()
+		get_node(label).show()
 		
 	else: 
-		get_node(\"Label\").hide()
+		get_node(label).hide()
 "
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 150
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
 
 size = 45
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 7 )
+font_data = ExtResource( 6 )
 _sections_unfolded = [ "Settings" ]
 
-[node name="World" type="Node" index="0"]
+[sub_resource type="StyleBoxFlat" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.890625, 0.857058, 0.031311, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.640625, 0.0500488, 0.0500488, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border Width", "Corner Radius", "Expand Margin", "Resource" ]
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = true
+border_width_left = 0
+border_width_top = 0
+border_width_right = 0
+border_width_bottom = 0
+border_color = Color( 0.8, 0.8, 0.8, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+
+[node name="World" type="Node"]
 
 script = ExtResource( 1 )
+signal_label = NodePath("HUD/LabelSignalQuality")
+progress_bar = NodePath("HUD/ProgressBar")
+final_score_label = NodePath("HUD/LabelFinalScore")
 
-[node name="Pauser" type="CanvasLayer" parent="." index="0"]
+[node name="MediaTruck" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 287.516, 551.145 )
+
+[node name="TransmissionLine" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 281.784, 534.967 )
+
+[node name="CloudSpawner" parent="." index="2" instance=ExtResource( 4 )]
+
+[node name="SatellitePath" parent="." index="3" instance=ExtResource( 5 )]
+
+[node name="Pauser" type="CanvasLayer" parent="." index="4"]
 
 pause_mode = 2
 layer = 1
@@ -50,8 +130,9 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Pause" ]
+label = NodePath("LabelPause")
 
-[node name="Label" type="Label" parent="Pauser" index="0"]
+[node name="LabelPause" type="Label" parent="Pauser" index="0"]
 
 visible = false
 anchor_left = 0.0
@@ -67,7 +148,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "PAUSED"
 align = 1
 valign = 1
@@ -75,18 +156,6 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_fonts" ]
-
-[node name="MediaTruck" parent="." index="1" instance=ExtResource( 3 )]
-
-position = Vector2( 287.516, 551.145 )
-
-[node name="TransmissionLine" parent="." index="2" instance=ExtResource( 4 )]
-
-position = Vector2( 281.784, 534.967 )
-
-[node name="CloudSpawner" parent="." index="3" instance=ExtResource( 5 )]
-
-[node name="SatellitePath" parent="." index="4" instance=ExtResource( 6 )]
 
 [node name="HUD" type="CanvasLayer" parent="." index="5"]
 
@@ -96,7 +165,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Label" type="Label" parent="HUD" index="0"]
+[node name="LabelSignalQuality" type="Label" parent="HUD" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -118,8 +187,67 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "custom_fonts" ]
 
+[node name="ProgressBar" type="ProgressBar" parent="HUD" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 23.0
+margin_top = 683.0
+margin_right = 1269.0
+margin_bottom = 712.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "custom_styles" ]
+
+[node name="LabelFinalScore" type="Label" parent="HUD" index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 367.0
+margin_top = 344.0
+margin_right = 407.0
+margin_bottom = 358.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Timer" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = false
+autostart = true
+_sections_unfolded = [ "Pause" ]
+
 [connection signal="anthenaRotated" from="MediaTruck" to="TransmissionLine" method="_on_MediaTruck_anthenaRotated"]
 
 [connection signal="strength_changed" from="TransmissionLine" to="." method="_on_TransmissionLine_strength_changed"]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
