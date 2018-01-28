@@ -13,6 +13,7 @@ const RUNNING_TIME_MAX = 20
 export(NodePath) var signal_label
 export(NodePath) var progress_bar
 export(NodePath) var final_score_label
+export(NodePath) var tv_sprite
 
 # Variables
 var signal_strength = 0
@@ -43,24 +44,31 @@ func _on_Timer_timeout():
 func tick_waiting():
 	waiting_time -= TIMER_STEP
 	get_node(progress_bar).value = waiting_time / WAITING_TIME_MAX * 100
+	set_tv_alpha()
 	if waiting_time <= 0:
 		# TODO change progress bar color
 		game_state = GAME_STATES.running
+		get_node(tv_sprite).playing = true
 		
 func tick_running():
 	running_time += TIMER_STEP
 	get_node(progress_bar).value = running_time / RUNNING_TIME_MAX * 100
+	set_tv_alpha()
 	current_signals.append(signal_strength)
 	if running_time >= RUNNING_TIME_MAX:
 		game_state = GAME_STATES.finished
 		get_node(final_score_label).set_text("YOUR SIGNAL WAS " + str(get_current_signal_mean()) + "%")
 		get_node(final_score_label).show()
+		get_node(tv_sprite).hide()
 
 func get_current_signal_mean():
 	var sum = 0
 	for current_signal in current_signals:
 		sum += current_signal
 	return sum / current_signals.size()
+	
+func set_tv_alpha():
+	get_node(tv_sprite).modulate.a = float(signal_strength) / 100
 	
 	
 	

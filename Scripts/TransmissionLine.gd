@@ -27,13 +27,13 @@ func calculate_strength():
 	var areas
 	if get_node("Ray1").overlaps_area(get_parent().get_node("SatellitePath/Follow/Satellite")):
 		if has_clear_path(get_node("Ray1")):
-			new_strength +=60
+			new_strength +=50
 	if get_node("Ray2").overlaps_area(get_parent().get_node("SatellitePath/Follow/Satellite")):
 		if has_clear_path(get_node("Ray2")):
-			new_strength +=20
+			new_strength +=25
 	if get_node("Ray3").overlaps_area(get_parent().get_node("SatellitePath/Follow/Satellite")):
 		if has_clear_path(get_node("Ray3")):
-			new_strength +=20
+			new_strength +=25
  	
 	emit_signal('strength_changed', new_strength)
 	pass

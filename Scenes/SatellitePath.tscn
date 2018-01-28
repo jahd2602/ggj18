@@ -16,7 +16,7 @@ _data = {
 custom_solver_bias = 0.0
 radius = 10.0
 
-[node name="SatellitePath" type="Path2D" index="0"]
+[node name="SatellitePath" type="Path2D"]
 
 position = Vector2( 89.8755, 0 )
 scale = Vector2( 0.915254, 1 )

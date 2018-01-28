@@ -101,6 +101,7 @@ position = Vector2( 0, -32 )
 frames = SubResource( 1 )
 animation = "default"
 script = ExtResource( 75 )
+_sections_unfolded = [ "Material", "Visibility" ]
 
 [connection signal="anthenaRotated" from="." to="Anthena" method="_on_MediaTruck_anthenaRotated"]
 
