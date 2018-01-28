@@ -18,10 +18,11 @@ script = ExtResource( 1 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -69.7241, -19.3778, -53.7978, 9.08615, 41.4209, 45.0049, 70.2237, 27.3844, 67.8517, -18.0224, 60.7357, -36.9983, -11.7796, -46.8252, -32.4498, -40.3869, -52.7812, -36.3206 )
+polygon = PoolVector2Array( -66.6744, -20.0555, -56.8475, 5.35873, 35.9991, 53.4764, 70.2237, 27.3844, 67.8517, -18.0224, 60.7357, -36.9983, -11.7796, -46.8252, -32.4498, -40.3869, -52.7812, -36.3206 )
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
+rotation = 0.0848741
 scale = Vector2( 0.13, 0.13 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Animation", "Transform" ]
